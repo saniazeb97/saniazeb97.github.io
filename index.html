@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sania Zeb — AI Engineer</title>
+<meta name="description" content="AI Engineer working across computer vision, NLP, and LLM systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0D1117;
+    --surface:#161B22;
+    --surface-2:#1C2330;
+    --border:#30363D;
+    --text:#E6EDF3;
+    --muted:#8B949E;
+    --amber:#F0B429;
+    --blue:#58A6FF;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+    --maxw: 920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--blue); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:3px; border-radius:2px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  /* Nav */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(13,17,23,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px;}
+  .nav-brand{font-family:var(--mono); font-weight:600; color:var(--text); font-size:14px;}
+  .nav-links{display:flex; gap:22px; font-family:var(--mono); font-size:13px;}
+  .nav-links a{color:var(--muted);}
+  .nav-links a:hover{color:var(--amber); text-decoration:none;}
+  .nav-links a::before{content:"~/"; color:var(--border);}
+  @media (max-width:560px){
+    nav .wrap{flex-direction:column; align-items:flex-start; gap:10px;}
+    .nav-links{gap:14px; font-size:12px; flex-wrap:wrap;}
+  }
+
+  /* Hero */
+  header.hero{padding:88px 0 56px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:13px; color:var(--amber);
+    letter-spacing:0.02em; margin-bottom:14px; display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow .dot{width:8px; height:8px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber); flex-shrink:0;}
+  h1{
+    font-family:var(--sans); font-weight:800; font-size:clamp(34px,5vw,52px);
+    margin:0 0 14px; letter-spacing:-0.02em; line-height:1.08;
+  }
+  .lede{font-size:18px; color:var(--muted); max-width:620px; margin:0 0 28px;}
+  .lede strong{color:var(--text); font-weight:600;}
+
+  .contact-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:48px;}
+  .pill{
+    font-family:var(--mono); font-size:13px; color:var(--text);
+    border:1px solid var(--border); border-radius:6px; padding:7px 13px;
+    background:var(--surface); transition:border-color .15s, transform .15s;
+  }
+  .pill:hover{border-color:var(--amber); text-decoration:none; transform:translateY(-1px);}
+
+  /* Pipeline signature element */
+  .pipeline{display:flex; align-items:center; flex-wrap:wrap; gap:0; font-family:var(--mono);}
+  .pnode{
+    display:flex; align-items:center; gap:10px;
+    padding:11px 16px; border:1px solid var(--border); border-radius:8px;
+    background:var(--surface); font-size:13px; color:var(--text);
+    opacity:0; transform:translateY(8px);
+    animation:riseIn .5s ease forwards;
+  }
+  .pnode .n{color:var(--amber); font-weight:600;}
+  .parrow{color:var(--border); margin:0 10px; font-size:16px; opacity:0; animation:riseIn .5s ease forwards;}
+  @keyframes riseIn{to{opacity:1; transform:translateY(0);}}
+
+  /* Sections */
+  section{padding:64px 0; border-top:1px solid var(--border);}
+  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:36px;}
+  .section-head .tag{font-family:var(--mono); font-size:13px; color:var(--amber);}
+  .section-head h2{font-size:26px; margin:0; font-weight:700; letter-spacing:-0.01em;}
+
+  /* Experience */
+  .job{
+    display:grid; grid-template-columns:150px 1fr; gap:24px;
+    padding:22px 0; border-bottom:1px solid var(--border);
+  }
+  .job:last-child{border-bottom:none;}
+  .job-date{font-family:var(--mono); font-size:12.5px; color:var(--muted); padding-top:3px;}
+  .job-title{font-size:17px; font-weight:700; margin:0 0 2px;}
+  .job-org{font-family:var(--mono); font-size:13px; color:var(--amber); margin-bottom:10px;}
+  .job ul{margin:0; padding-left:18px; color:var(--muted); font-size:14.5px;}
+  .job li{margin-bottom:5px;}
+  .job li strong{color:var(--text); font-weight:600;}
+
+  /* Projects */
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:680px){.grid{grid-template-columns:1fr;} .job{grid-template-columns:1fr; gap:6px;}}
+  .card{
+    border:1px solid var(--border); border-radius:10px; padding:22px;
+    background:var(--surface); display:flex; flex-direction:column; gap:12px;
+    transition:border-color .15s, transform .15s;
+  }
+  .card:hover{border-color:var(--amber); transform:translateY(-2px);}
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+  .card h3{font-size:16px; margin:0; font-weight:700; line-height:1.35;}
+  .card p{font-size:13.5px; color:var(--muted); margin:0; flex-grow:1;}
+  .gh-link{font-family:var(--mono); font-size:12px; color:var(--blue); white-space:nowrap; flex-shrink:0;}
+  .tags{display:flex; flex-wrap:wrap; gap:6px;}
+  .tag-chip{font-family:var(--mono); font-size:11px; color:var(--muted); border:1px solid var(--border); border-radius:4px; padding:3px 8px;}
+
+  /* Publication */
+  .pub-card{
+    border:1px solid var(--border); border-radius:10px; padding:28px;
+    background:linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+    position:relative; overflow:hidden;
+  }
+  .pub-badge{
+    font-family:var(--mono); font-size:12px; color:var(--amber);
+    border:1px solid var(--amber); border-radius:20px; padding:4px 12px;
+    display:inline-block; margin-bottom:16px;
+  }
+  .pub-card h3{font-size:19px; margin:0 0 10px; line-height:1.4;}
+  .pub-meta{font-family:var(--mono); font-size:13px; color:var(--muted); margin-bottom:16px;}
+  .pub-card p.abstract{font-size:14.5px; color:var(--muted); max-width:640px; margin-bottom:18px;}
+  .pub-stats{display:flex; gap:28px; margin:20px 0; flex-wrap:wrap;}
+  .pstat{font-family:var(--mono);}
+  .pstat .val{font-size:22px; font-weight:700; color:var(--amber); display:block;}
+  .pstat .lbl{font-size:11.5px; color:var(--muted);}
+
+  /* Footer */
+  footer{padding:56px 0 64px; text-align:center;}
+  footer .wrap{border-top:1px solid var(--border); padding-top:40px;}
+  footer h2{font-size:24px; margin:0 0 10px;}
+  footer p{color:var(--muted); margin:0 0 24px;}
+  .foot-links{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+  .copyright{font-family:var(--mono); font-size:12px; color:var(--border); margin-top:48px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-brand">sania<span style="color:var(--amber)">.</span>zeb</div>
+    <div class="nav-links">
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#research">research</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>AVAILABLE FOR OPPORTUNITIES</div>
+    <h1>Sania Zeb</h1>
+    <p class="lede">AI Engineer working across <strong>computer vision</strong>, <strong>NLP</strong>, and <strong>LLM systems</strong> — from model fine-tuning to real-time inference on edge devices. I take systems from messy raw data through to production.</p>
+
+    <div class="contact-row">
+      <a class="pill" href="mailto:saniazaib329@gmail.com">✉ saniazaib329@gmail.com</a>
+      <a class="pill" href="https://github.com/saniazeb97" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="pill" href="https://www.linkedin.com/in/saniazeb" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="pill" href="https://scholar.google.com/citations?user=PUeapXIAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a>
+    </div>
+
+    <div class="pipeline" aria-hidden="true">
+      <div class="pnode" style="animation-delay:.05s"><span class="n">01</span> Raw Data</div>
+      <div class="parrow" style="animation-delay:.25s">→</div>
+      <div class="pnode" style="animation-delay:.35s"><span class="n">02</span> Model</div>
+      <div class="parrow" style="animation-delay:.55s">→</div>
+      <div class="pnode" style="animation-delay:.65s"><span class="n">03</span> Deployment</div>
+      <div class="parrow" style="animation-delay:.85s">→</div>
+      <div class="pnode" style="animation-delay:.95s"><span class="n">04</span> Impact</div>
+    </div>
+  </div>
+</header>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">~/experience</span><h2>Professional Experience</h2></div>
+
+    <div class="job">
+      <div class="job-date">02/2026 — 06/2026</div>
+      <div>
+        <p class="job-title">AI Engineer (Contract)</p>
+        <p class="job-org">CCript Agency · Islamabad, Pakistan</p>
+        <ul>
+          <li>Annotated civil construction imagery (pipes, waterlines) and fine-tuned a <strong>D-FINE</strong> object detection model</li>
+          <li>Built <strong>PaddleOCR</strong>-based digitization of engineering plans and automated quantity-takeoff workflows</li>
+          <li>Developed multimodal ad-generation systems using <strong>Vision-Language Models</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">02/2025 — 02/2026</div>
+      <div>
+        <p class="job-title">AI Engineer</p>
+        <p class="job-org">Sysreforms International · Islamabad, Pakistan</p>
+        <ul>
+          <li>Fine-tuned <strong>Mistral, Llama 3, Azure &amp; OpenAI models</strong> with <strong>LoRA/QLoRA</strong> via PEFT</li>
+          <li>Built a <strong>Knowledge Graph + RAG</strong> pipeline with intent-based query routing for factual Q&amp;A</li>
+          <li>Shipped a <strong>FastAPI + Streamlit</strong> app on a secure Azure VM, with an LLM-as-judge evaluation layer</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">06/2024 — 11/2024</div>
+      <div>
+        <p class="job-title">AI Engineer</p>
+        <p class="job-org">Aiblux Solutions · Remote, Pakistan</p>
+        <ul>
+          <li>Built a <strong>Weaviate/pgvector</strong>-backed RAG pipeline, cutting response latency by <strong>70%</strong></li>
+          <li>Shipped real-time <strong>YOLO / InsightFace</strong> vision systems for loitering, face, and plate recognition</li>
+          <li>Containerized and deployed models on <strong>Raspberry Pi</strong> edge devices via MQTT</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">10/2021 — 11/2022</div>
+      <div>
+        <p class="job-title">Jr. Machine Learning Engineer</p>
+        <p class="job-org">Neurog · Islamabad, Pakistan</p>
+        <ul>
+          <li>Designed a snowflake schema and ETL pipelines for NFT market data</li>
+          <li>Built <strong>Tableau</strong> dashboards and time-series forecasts of NFT market trends</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">~/projects</span><h2>Personal Projects</h2></div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-top"><h3>InsightBot</h3><a class="gh-link" href="https://github.com/saniazeb97/insightbot" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <p>A LangChain SQL agent that writes and executes live SQL from natural-language questions over scraped e-commerce data, plus a Streamlit analytics dashboard.</p>
+        <div class="tags"><span class="tag-chip">LangChain</span><span class="tag-chip">MySQL</span><span class="tag-chip">Tool Calling</span><span class="tag-chip">Streamlit</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>NYC Trends Analysis</h3><a class="gh-link" href="https://github.com/saniazeb97/nyc-trends-tableau" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <p>EDA and correlation analysis across Airbnb, Census, and NYPD crime data, with interactive Tableau dashboards and story-flow presentations across NYC's five boroughs.</p>
+        <div class="tags"><span class="tag-chip">Pandas</span><span class="tag-chip">Tableau</span><span class="tag-chip">Correlation Analysis</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Urdu TV Sentiment Monitoring</h3><a class="gh-link" href="https://github.com/saniazeb97/sentiment-monitoring-of-tv-news-shows" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <p>Transcribes live Urdu political TV audio (Whisper) and classifies a speaker's sentiment toward a topic using fine-tuned, benchmarked BERT and DistilBERT models.</p>
+        <div class="tags"><span class="tag-chip">Whisper</span><span class="tag-chip">BERT</span><span class="tag-chip">DistilBERT</span><span class="tag-chip">FastAPI</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Deepfake Detection</h3><a class="gh-link" href="https://github.com/saniazeb97/deepfake-detection-vgg16-lstm" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <p>A VGG16-LSTM pipeline combining CNN spatial features with LSTM temporal classification to detect deepfake videos — 83.2% accuracy. BS thesis project.</p>
+        <div class="tags"><span class="tag-chip">VGG16</span><span class="tag-chip">LSTM</span><span class="tag-chip">OpenCV</span><span class="tag-chip">Flask</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">~/research</span><h2>Publication</h2></div>
+
+    <div class="pub-card">
+      <span class="pub-badge">PEER-REVIEWED · SCIENTIFIC REPORTS (NATURE)</span>
+      <h3>Tuberculosis Detection Using Few Shot Learning</h3>
+      <p class="pub-meta">Riasat, K., Jamil, A., Al-Otaibi, S., <strong style="color:var(--text)">Zeb, S.</strong>, Riasat, S., Kanwal, S. · Scientific Reports 15, 13167 (2025)</p>
+      <p class="abstract">A lightweight few-shot learning model (TB-FSNet) combining U-Net lung segmentation with a MobileNet-V2 + self-attention prototypical network for chest X-ray-based TB screening — matching or beating much larger backbones while staying deployable on edge devices.</p>
+
+      <div class="pub-stats">
+        <div class="pstat"><span class="val">93.6%</span><span class="lbl">ACCURACY</span></div>
+        <div class="pstat"><span class="val">2.21M</span><span class="lbl">PARAMETERS</span></div>
+        <div class="pstat"><span class="val">8.67MB</span><span class="lbl">MODEL SIZE</span></div>
+      </div>
+
+      <a class="pill" href="https://doi.org/10.1038/s41598-025-97803-9" target="_blank" rel="noopener">Read the paper ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's talk</h2>
+    <p>Open to AI engineering roles, research collaboration, or just an interesting problem to think through.</p>
+    <div class="foot-links">
+      <a class="pill" href="mailto:saniazaib329@gmail.com">Email</a>
+      <a class="pill" href="https://github.com/saniazeb97" target="_blank" rel="noopener">GitHub</a>
+      <a class="pill" href="https://www.linkedin.com/in/saniazeb" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="pill" href="https://scholar.google.com/citations?user=PUeapXIAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+    </div>
+    <div class="copyright">© 2026 Sania Zeb — built on GitHub Pages</div>
+  </div>
+</footer>
+
+</body>
+</html>
