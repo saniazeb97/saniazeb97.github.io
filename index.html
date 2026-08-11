@@ -10,17 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0D1117;
-    --surface:#161B22;
-    --surface-2:#1C2330;
-    --border:#30363D;
-    --text:#E6EDF3;
-    --muted:#8B949E;
-    --amber:#F0B429;
-    --blue:#58A6FF;
+    --bg:#FAFBFD;
+    --surface:#FFFFFF;
+    --surface-2:#EFF3F8;
+    --border:#DCE3ED;
+    --text:#0F1E3D;
+    --muted:#5B6B85;
+    --blue:#1D4ED8;
+    --blue-soft:#EEF3FF;
+    --amber:#B45309;
     --mono: 'JetBrains Mono', monospace;
     --sans: 'Inter', sans-serif;
-    --maxw: 920px;
+    --maxw: 940px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -30,7 +31,10 @@
   }
   body{
     margin:0;
-    background:var(--bg);
+    background:
+      linear-gradient(var(--bg) 0%, var(--bg) 100%),
+      repeating-linear-gradient(0deg, rgba(29,78,216,0.035) 0 1px, transparent 1px 32px),
+      repeating-linear-gradient(90deg, rgba(29,78,216,0.035) 0 1px, transparent 1px 32px);
     color:var(--text);
     font-family:var(--sans);
     line-height:1.6;
@@ -38,49 +42,49 @@
   }
   a{color:var(--blue); text-decoration:none;}
   a:hover{text-decoration:underline;}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:3px; border-radius:2px;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--blue); outline-offset:3px; border-radius:2px;}
 
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
 
   /* Nav */
   nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(13,17,23,0.85);
+    background:rgba(250,251,253,0.88);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--border);
   }
   nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px;}
-  .nav-brand{font-family:var(--mono); font-weight:600; color:var(--text); font-size:14px;}
-  .nav-links{display:flex; gap:22px; font-family:var(--mono); font-size:13px;}
+  .nav-brand{font-family:var(--mono); font-weight:700; color:var(--text); font-size:14px;}
+  .nav-links{display:flex; gap:20px; font-family:var(--mono); font-size:13px;}
   .nav-links a{color:var(--muted);}
-  .nav-links a:hover{color:var(--amber); text-decoration:none;}
-  .nav-links a::before{content:"~/"; color:var(--border);}
-  @media (max-width:560px){
+  .nav-links a:hover{color:var(--blue); text-decoration:none;}
+  .nav-links a::before{content:"~/"; color:#B7C2D4;}
+  @media (max-width:620px){
     nav .wrap{flex-direction:column; align-items:flex-start; gap:10px;}
-    .nav-links{gap:14px; font-size:12px; flex-wrap:wrap;}
+    .nav-links{gap:12px; font-size:11.5px; flex-wrap:wrap;}
   }
 
   /* Hero */
   header.hero{padding:88px 0 56px;}
   .eyebrow{
-    font-family:var(--mono); font-size:13px; color:var(--amber);
+    font-family:var(--mono); font-size:13px; color:var(--blue);
     letter-spacing:0.02em; margin-bottom:14px; display:flex; align-items:center; gap:8px;
   }
-  .eyebrow .dot{width:8px; height:8px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber); flex-shrink:0;}
+  .eyebrow .dot{width:8px; height:8px; border-radius:50%; background:var(--blue); box-shadow:0 0 0 4px var(--blue-soft); flex-shrink:0;}
   h1{
     font-family:var(--sans); font-weight:800; font-size:clamp(34px,5vw,52px);
-    margin:0 0 14px; letter-spacing:-0.02em; line-height:1.08;
+    margin:0 0 14px; letter-spacing:-0.02em; line-height:1.08; color:var(--text);
   }
-  .lede{font-size:18px; color:var(--muted); max-width:620px; margin:0 0 28px;}
-  .lede strong{color:var(--text); font-weight:600;}
+  .lede{font-size:18px; color:var(--muted); max-width:640px; margin:0 0 28px;}
+  .lede strong{color:var(--text); font-weight:700;}
 
   .contact-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:48px;}
   .pill{
     font-family:var(--mono); font-size:13px; color:var(--text);
     border:1px solid var(--border); border-radius:6px; padding:7px 13px;
-    background:var(--surface); transition:border-color .15s, transform .15s;
+    background:var(--surface); transition:border-color .15s, transform .15s, box-shadow .15s;
   }
-  .pill:hover{border-color:var(--amber); text-decoration:none; transform:translateY(-1px);}
+  .pill:hover{border-color:var(--blue); text-decoration:none; transform:translateY(-1px); box-shadow:0 2px 8px rgba(29,78,216,0.12);}
 
   /* Pipeline signature element */
   .pipeline{display:flex; align-items:center; flex-wrap:wrap; gap:0; font-family:var(--mono);}
@@ -91,15 +95,15 @@
     opacity:0; transform:translateY(8px);
     animation:riseIn .5s ease forwards;
   }
-  .pnode .n{color:var(--amber); font-weight:600;}
-  .parrow{color:var(--border); margin:0 10px; font-size:16px; opacity:0; animation:riseIn .5s ease forwards;}
+  .pnode .n{color:var(--blue); font-weight:700;}
+  .parrow{color:#C3CCDA; margin:0 10px; font-size:16px; opacity:0; animation:riseIn .5s ease forwards;}
   @keyframes riseIn{to{opacity:1; transform:translateY(0);}}
 
   /* Sections */
   section{padding:64px 0; border-top:1px solid var(--border);}
   .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:36px;}
-  .section-head .tag{font-family:var(--mono); font-size:13px; color:var(--amber);}
-  .section-head h2{font-size:26px; margin:0; font-weight:700; letter-spacing:-0.01em;}
+  .section-head .tag{font-family:var(--mono); font-size:13px; color:var(--blue);}
+  .section-head h2{font-size:26px; margin:0; font-weight:700; letter-spacing:-0.01em; color:var(--text);}
 
   /* Experience */
   .job{
@@ -108,40 +112,53 @@
   }
   .job:last-child{border-bottom:none;}
   .job-date{font-family:var(--mono); font-size:12.5px; color:var(--muted); padding-top:3px;}
-  .job-title{font-size:17px; font-weight:700; margin:0 0 2px;}
+  .job-title{font-size:17px; font-weight:700; margin:0 0 2px; color:var(--text);}
   .job-org{font-family:var(--mono); font-size:13px; color:var(--amber); margin-bottom:10px;}
   .job ul{margin:0; padding-left:18px; color:var(--muted); font-size:14.5px;}
   .job li{margin-bottom:5px;}
   .job li strong{color:var(--text); font-weight:600;}
 
+  /* Education */
+  .edu{
+    display:grid; grid-template-columns:150px 1fr; gap:24px;
+    padding:20px 0; border-bottom:1px solid var(--border);
+  }
+  .edu:last-child{border-bottom:none;}
+  .edu-date{font-family:var(--mono); font-size:12.5px; color:var(--muted); padding-top:3px;}
+  .edu-title{font-size:16px; font-weight:700; margin:0 0 2px; color:var(--text);}
+  .edu-org{font-family:var(--mono); font-size:13px; color:var(--amber); margin-bottom:6px;}
+  .edu-thesis{font-size:14px; color:var(--muted);}
+  .edu-thesis em{color:var(--text); font-style:normal; font-weight:500;}
+  .edu-gpa{font-family:var(--mono); font-size:12px; color:var(--muted);}
+
   /* Projects */
   .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-  @media (max-width:680px){.grid{grid-template-columns:1fr;} .job{grid-template-columns:1fr; gap:6px;}}
+  @media (max-width:680px){.grid{grid-template-columns:1fr;} .job, .edu{grid-template-columns:1fr; gap:6px;}}
   .card{
     border:1px solid var(--border); border-radius:10px; padding:22px;
     background:var(--surface); display:flex; flex-direction:column; gap:12px;
-    transition:border-color .15s, transform .15s;
+    transition:border-color .15s, transform .15s, box-shadow .15s;
   }
-  .card:hover{border-color:var(--amber); transform:translateY(-2px);}
+  .card:hover{border-color:var(--blue); transform:translateY(-2px); box-shadow:0 6px 20px rgba(15,30,61,0.08);}
   .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
-  .card h3{font-size:16px; margin:0; font-weight:700; line-height:1.35;}
+  .card h3{font-size:16px; margin:0; font-weight:700; line-height:1.35; color:var(--text);}
   .card p{font-size:13.5px; color:var(--muted); margin:0; flex-grow:1;}
   .gh-link{font-family:var(--mono); font-size:12px; color:var(--blue); white-space:nowrap; flex-shrink:0;}
   .tags{display:flex; flex-wrap:wrap; gap:6px;}
-  .tag-chip{font-family:var(--mono); font-size:11px; color:var(--muted); border:1px solid var(--border); border-radius:4px; padding:3px 8px;}
+  .tag-chip{font-family:var(--mono); font-size:11px; color:var(--muted); border:1px solid var(--border); border-radius:4px; padding:3px 8px; background:var(--surface-2);}
 
   /* Publication */
   .pub-card{
     border:1px solid var(--border); border-radius:10px; padding:28px;
-    background:linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+    background:linear-gradient(135deg, var(--surface) 0%, var(--blue-soft) 100%);
     position:relative; overflow:hidden;
   }
   .pub-badge{
-    font-family:var(--mono); font-size:12px; color:var(--amber);
-    border:1px solid var(--amber); border-radius:20px; padding:4px 12px;
-    display:inline-block; margin-bottom:16px;
+    font-family:var(--mono); font-size:12px; color:var(--blue);
+    border:1px solid var(--blue); border-radius:20px; padding:4px 12px;
+    display:inline-block; margin-bottom:16px; background:var(--surface);
   }
-  .pub-card h3{font-size:19px; margin:0 0 10px; line-height:1.4;}
+  .pub-card h3{font-size:19px; margin:0 0 10px; line-height:1.4; color:var(--text);}
   .pub-meta{font-family:var(--mono); font-size:13px; color:var(--muted); margin-bottom:16px;}
   .pub-card p.abstract{font-size:14.5px; color:var(--muted); max-width:640px; margin-bottom:18px;}
   .pub-stats{display:flex; gap:28px; margin:20px 0; flex-wrap:wrap;}
@@ -152,19 +169,20 @@
   /* Footer */
   footer{padding:56px 0 64px; text-align:center;}
   footer .wrap{border-top:1px solid var(--border); padding-top:40px;}
-  footer h2{font-size:24px; margin:0 0 10px;}
+  footer h2{font-size:24px; margin:0 0 10px; color:var(--text);}
   footer p{color:var(--muted); margin:0 0 24px;}
   .foot-links{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
-  .copyright{font-family:var(--mono); font-size:12px; color:var(--border); margin-top:48px;}
+  .copyright{font-family:var(--mono); font-size:12px; color:#B7C2D4; margin-top:48px;}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <div class="nav-brand">sania<span style="color:var(--amber)">.</span>zeb</div>
+    <div class="nav-brand">sania<span style="color:var(--blue)">.</span>zeb</div>
     <div class="nav-links">
       <a href="#experience">experience</a>
+      <a href="#education">education</a>
       <a href="#projects">projects</a>
       <a href="#research">research</a>
       <a href="#contact">contact</a>
@@ -176,7 +194,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="dot"></span>AVAILABLE FOR OPPORTUNITIES</div>
     <h1>Sania Zeb</h1>
-    <p class="lede">AI Engineer working across <strong>computer vision</strong>, <strong>NLP</strong>, and <strong>LLM systems</strong> — from model fine-tuning to real-time inference on edge devices. I take systems from messy raw data through to production.</p>
+    <p class="lede">AI Engineer with 3 years of experience designing and deploying production ML systems across <strong>computer vision</strong>, <strong>LLMs</strong>, and <strong>retrieval-augmented generation</strong>. I take systems from unstructured data through to production deployment on secure cloud infrastructure.</p>
 
     <div class="contact-row">
       <a class="pill" href="mailto:saniazaib329@gmail.com">✉ saniazaib329@gmail.com</a>
@@ -207,9 +225,10 @@
         <p class="job-title">AI Engineer (Contract)</p>
         <p class="job-org">CCript Agency · Islamabad, Pakistan</p>
         <ul>
+          <li>Implemented <strong>PaddleOCR</strong> to digitize annotations and labels from civil engineering plans</li>
           <li>Annotated civil construction imagery (pipes, waterlines) and fine-tuned a <strong>D-FINE</strong> object detection model</li>
-          <li>Built <strong>PaddleOCR</strong>-based digitization of engineering plans and automated quantity-takeoff workflows</li>
-          <li>Developed multimodal ad-generation systems using <strong>Vision-Language Models</strong></li>
+          <li>Developed workflows to estimate pipe and component quantities from detection outputs, extracting structured data from engineering drawings for automated quantity takeoff</li>
+          <li>Worked on multimodal advertisement generation systems using <strong>Vision-Language Models (VLMs)</strong>, combining visual understanding and natural language generation for creative automation</li>
         </ul>
       </div>
     </div>
@@ -220,9 +239,11 @@
         <p class="job-title">AI Engineer</p>
         <p class="job-org">Sysreforms International · Islamabad, Pakistan</p>
         <ul>
-          <li>Fine-tuned <strong>Mistral, Llama 3, Azure &amp; OpenAI models</strong> with <strong>LoRA/QLoRA</strong> via PEFT</li>
-          <li>Built a <strong>Knowledge Graph + RAG</strong> pipeline with intent-based query routing for factual Q&amp;A</li>
-          <li>Shipped a <strong>FastAPI + Streamlit</strong> app on a secure Azure VM, with an LLM-as-judge evaluation layer</li>
+          <li>Handled unstructured data, building end-to-end preprocessing pipelines to produce structured, scalable datasets for LLM training and inference</li>
+          <li>Fine-tuned LLMs (<strong>Mistral, Llama 3, OpenAI API models, Azure-hosted models</strong>) using <strong>LoRA and QLoRA</strong> via PEFT</li>
+          <li>Designed a query-routing system that classified incoming questions by intent: factual queries routed to <strong>Knowledge Graph + RAG</strong> for grounded retrieval; explanatory, summarization, and report-generation queries routed to the fine-tuned LLM</li>
+          <li>Built a multi-layered LLM evaluation framework: automated metrics to assess accuracy against source content, plus an <strong>LLM-as-judge</strong> step to verify response relevance and factual fairness</li>
+          <li>Built and deployed a <strong>Streamlit</strong> application backed by a <strong>FastAPI</strong> service layer, providing end users direct access to factual Q&amp;A, summarization, and report generation</li>
         </ul>
       </div>
     </div>
@@ -233,9 +254,9 @@
         <p class="job-title">AI Engineer</p>
         <p class="job-org">Aiblux Solutions · Remote, Pakistan</p>
         <ul>
-          <li>Built a <strong>Weaviate/pgvector</strong>-backed RAG pipeline, cutting response latency by <strong>70%</strong></li>
-          <li>Shipped real-time <strong>YOLO / InsightFace</strong> vision systems for loitering, face, and plate recognition</li>
-          <li>Containerized and deployed models on <strong>Raspberry Pi</strong> edge devices via MQTT</li>
+          <li>Designed and deployed a Retrieval-Augmented Generation (RAG) pipeline using <strong>FAISS and Weaviate</strong> for vector search, with parent-child chunking for enterprise product query workflows, reducing response latency by <strong>70%</strong></li>
+          <li>Built real-time computer vision systems (<strong>YOLO, InsightFace</strong>) for loitering detection, facial recognition, parcel identification, and license plate recognition on live camera footage</li>
+          <li>Containerized with <strong>Docker</strong> and deployed these models on <strong>Raspberry Pi</strong> edge devices via MQTT, enabling efficient real-time inference</li>
         </ul>
       </div>
     </div>
@@ -246,9 +267,36 @@
         <p class="job-title">Jr. Machine Learning Engineer</p>
         <p class="job-org">Neurog · Islamabad, Pakistan</p>
         <ul>
-          <li>Designed a snowflake schema and ETL pipelines for NFT market data</li>
-          <li>Built <strong>Tableau</strong> dashboards and time-series forecasts of NFT market trends</li>
+          <li>Conducted exploratory data analysis (EDA) on geospatial data to uncover regional and temporal patterns in social media activity and NFT market performance</li>
+          <li>Designed a snowflake schema for efficient NFT data management and storage</li>
+          <li>Streamlined ETL pipelines for reliable, repeatable data integration across sources</li>
+          <li>Built <strong>Tableau</strong> dashboards to visualize NFT trends and highlight social sentiment variation over time</li>
+          <li>Implemented statistical time-series models to forecast NFT market trends</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head"><span class="tag">~/education</span><h2>Education</h2></div>
+
+    <div class="edu">
+      <div class="edu-date">2022 — 2024</div>
+      <div>
+        <p class="edu-title">MS in Artificial Intelligence <span class="edu-gpa">· CGPA 3.73/4.0</span></p>
+        <p class="edu-org">National University of Computer and Emerging Sciences (FAST), Islamabad</p>
+        <p class="edu-thesis">Thesis: <em>"Boundary Aware Knowledge Distillation for Lightweight Dermoscopy Segmentation"</em></p>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="edu-date">2017 — 2021</div>
+      <div>
+        <p class="edu-title">BS in Computer Science <span class="edu-gpa">· GPA 3.12/4.0</span></p>
+        <p class="edu-org">Air University, Islamabad</p>
+        <p class="edu-thesis">Thesis: <em>"Deepfake Video Detection Through Facial Inconsistencies"</em></p>
       </div>
     </div>
   </div>
@@ -273,7 +321,7 @@
 
       <div class="card">
         <div class="card-top"><h3>Urdu TV Sentiment Monitoring</h3><a class="gh-link" href="https://github.com/saniazeb97/sentiment-monitoring-of-tv-news-shows" target="_blank" rel="noopener">GitHub ↗</a></div>
-        <p>Transcribes live Urdu political TV audio (Whisper) and classifies a speaker's sentiment toward a topic using fine-tuned, benchmarked BERT and DistilBERT models.</p>
+        <p>Transcribes live Urdu political TV audio (Whisper) and classifies a speaker's sentiment toward a topic using fine-tuned, benchmarked BERT and DistilBERT models, served via FastAPI + Streamlit.</p>
         <div class="tags"><span class="tag-chip">Whisper</span><span class="tag-chip">BERT</span><span class="tag-chip">DistilBERT</span><span class="tag-chip">FastAPI</span></div>
       </div>
 
